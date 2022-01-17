@@ -1,2 +1,2 @@
 # qtserverclient
-Qt5 socket server and client, taliking to eachothers. CMake makes possible to build two executables in same Qt Creator project.
+Qt5 socket server and client, taliking to eachothers. CMake makes possible to build two executables in same Qt Creator project. Both excecutables can be executed from in QtCreator
