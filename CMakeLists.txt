@@ -17,7 +17,7 @@ find_package(Qt${QT_VERSION_MAJOR} COMPONENTS Core Network REQUIRED)
 
 file(GLOB SOURCES socketserver/*.cpp socketclient/*.cpp)
 file(GLOB HEADERS socketserver/*.h socketclient/*.h)
-
+add_custom_target(OTHERIFLES SOURCES README.md)
 
 
 add_executable(socketserver
