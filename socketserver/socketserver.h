@@ -11,6 +11,8 @@
 #include <QDebug>
 #include <QTcpServer>
 #include <QTcpSocket>
+#include <iostream>
+
 
 class SocketServer : public QObject
 {

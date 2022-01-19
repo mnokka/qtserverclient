@@ -22,14 +22,25 @@ SocketServer::SocketServer(QObject *parent) :
 void SocketServer::newConnection()
 {
     QTcpSocket *socket = server->nextPendingConnection();
-
+    socket->setSocketOption(QAbstractSocket::LowDelayOption,1);
     socket->write("SERVER MESSAGE: New connection detected\r\n");
     socket->flush();
+    //qDebug() << "entering forloop#";
+    //for (int i=10;i<10;i++) {
+    //    qDebug() << "forloo:" <<i;
+      //  std::cout << "sdfgwg";
+        socket->waitForBytesWritten(3000);
+        socket->waitForReadyRead(3000);
 
-    socket->waitForBytesWritten(3000);
-    socket->waitForReadyRead(3000);
-    qDebug() << "SERVER: reading: " << socket->bytesAvailable() <<" bytes";
-    qDebug() << socket->readAll();
+
+        //socket->write("SERVER MESSAGEvvvv: New connection detected\r\n");
+        //socket->flush();
+
+        qDebug() << "SERVER: reading: " << socket->bytesAvailable() <<" bytes";
+        qDebug() << socket->readAll();
+        qDebug() << "------------------------------------------------";
+        socket->flush();
+//}
 
     socket->close();
 }
