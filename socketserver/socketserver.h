@@ -13,6 +13,7 @@
 #include <QTcpSocket>
 #include <iostream>
 
+#include <QRegularExpression>
 
 class SocketServer : public QObject
 {
@@ -28,6 +29,8 @@ public slots:
 private:
     QTcpServer *server;
     QString ipAddress;
+    void ParseMEssage(QString);
+    QString rosmessage;
 
 };
 

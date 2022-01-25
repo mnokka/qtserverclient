@@ -36,11 +36,28 @@ void SocketServer::newConnection()
         //socket->write("SERVER MESSAGEvvvv: New connection detected\r\n");
         //socket->flush();
 
+
         qDebug() << "SERVER: reading: " << socket->bytesAvailable() <<" bytes";
-        qDebug() << socket->readAll();
+       rosmessage = socket->readAll();
+        //qDebug() << socket->readAll();
+        qDebug() << rosmessage;
+        ParseMEssage(rosmessage);
         qDebug() << "------------------------------------------------";
         socket->flush();
 //}
 
     socket->close();
+}
+
+void SocketServer::ParseMEssage(QString message) {
+     qDebug() << "SERVER: message parser got " << message;
+
+     QRegularExpression re("(\\d*)(\\D*)(\\d*)");
+               QRegularExpressionMatch match = re.match(message);
+               if (match.hasMatch()) {
+                   QString e = match.captured(3);
+                   qDebug() << "Exctracted number value:" << e;
+               }
+
+
 }
